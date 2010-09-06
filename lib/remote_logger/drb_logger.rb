@@ -3,9 +3,11 @@ module RemoteLogger
   # Subclass of RemoteLogger::Logger communicating via DRb protocol
   class DrbLogger < RemoteLogger::Logger
 
-    def self.start(name = LOGGER_NAME, options = {})
+    def self.start(options = {})
       # Adding some security (disable remote eval)
       $SAFE = 1
+
+      name = options[:name] || LOGGER_NAME
 
       # Creating logger instance
       logger = new options
@@ -21,8 +23,9 @@ module RemoteLogger
       logger.info "#{name}: Service finished" if options[:verbose]
     end
 
-    def self.find(name = LOGGER_NAME, options = {})
+    def self.find(options = {})
       DRb.start_service
+
       # Connecting to Logger
       DRbObject.new_with_uri(options[:uri]||DRB_URI)
     end

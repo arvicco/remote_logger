@@ -3,9 +3,11 @@ module RemoteLogger
   # Subclass of RemoteLogger::Logger communicating via DRb protocol
   class RingyLogger < Logger
 
-    def self.start(name = LOGGER_NAME, options = {})
+    def self.start(options = {})
       # Adding some security (disable remote eval)
       $SAFE = 1
+
+      name = options[:name] || LOGGER_NAME
 
       # Creating logger instance
       logger = RemoteLogger::Logger.new options
@@ -23,8 +25,10 @@ module RemoteLogger
       logger.info "#{name}: Service finished" if options[:verbose]
     end
 
-    def self.find(name = LOGGER_NAME, options = {})
+    def self.find(options = {})
       DRb.start_service
+
+      name = options[:name] || LOGGER_NAME
 
       # Connecting to Ring server
       ring_server = Rinda::RingFinger.primary
