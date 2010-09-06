@@ -10,8 +10,8 @@ require 'date'
 Gem::Specification.new do |gem|
   gem.name        = "remote_logger"
   gem.version     = ::RemoteLogger::VERSION
-  gem.summary     = %q{FIXME: New project remote_logger}
-  gem.description = %q{FIXME: New project remote_logger}
+  gem.summary     = %q{Client/server for remote logger using multiple communication methods}
+  gem.description = %q{Client/server for remote logger using multiple communication methods}
   gem.authors     = ["arvicco"]
   gem.email       = "arvitallian@gmail.com"
   gem.homepage    = %q{http://github.com/arvicco/remote_logger}
