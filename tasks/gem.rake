@@ -34,6 +34,7 @@ namespace :gem do
 
   desc "Build and push gem to Gemcutter"
   task :release => [:build, 'git:tag'] do
+    puts "Pushing gem to Gemcutter"
     system "gem push #{PKG_PATH}/#{gem_file}"
   end
 end
