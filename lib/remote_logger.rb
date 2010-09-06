@@ -25,5 +25,5 @@ end  # module RemoteLogger
 
 # Require all ruby source files located under directory lib/remote_logger
 # If you need files in specific order, you should specify it here before the glob
-RemoteLogger.require_libs %W[**/*]
+RemoteLogger.require_libs %W[logger **/*]
 

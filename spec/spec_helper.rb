@@ -45,4 +45,11 @@ module RemoteLoggerTest
     @logfile_mock.should_receive(:print).with(Regexp.new(formatted_message))
     $stdout.should_receive(:print).with(Regexp.new(formatted_message))
   end
+
+  def logger_should_not_log message
+    formatted_message = Time.now.strftime message
+    @logfile_mock.should_not_receive(:print).with(Regexp.new(formatted_message))
+    $stdout.should_not_receive(:print).with(Regexp.new(formatted_message))
+  end
+
 end

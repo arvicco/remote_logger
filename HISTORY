@@ -9,3 +9,7 @@
 == 0.0.3 / 2010-09-06
 
 * Gemspec fixed
+
+== 0.0.4 / 2010-09-06
+
+* Procedures converted into classes
