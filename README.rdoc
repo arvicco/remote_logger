@@ -1,27 +1,61 @@
-= remote_logger
-by:: Arvicco
-url:: http://github.com/arvicco/remote_logger
+remote_logger
+    by: arvicco
+    url: http://github.com/arvicco/remote_logger
 
 == DESCRIPTION:
 
-FIXME (describe your package)
+Log server/client with sensible defaults that can be used for remote/centralized logging.
 
-== FEATURES/PROBLEMS:
+== FEATURES:
 
-* FIXME (list of features or problems)
+Log4r is a customizable logger with advanced functionality. Unfortunately, it only supports (rarely used) ROMP protocol
+for remote logging support. This project aims to improve remote logging by creatting a wrapper around Log4r that:
+* Exposes Log4r functionality remotely through multiple protocols
+* Writes to (log server) stdout AND log file 'remote.log' by default
+* Allows client to use Drb uri or Ring server to find the logger service
+
+== PROBLEMS/TODO:
+
+* TODO: add AMQP rpc support
+
+  Work in progress, please do not use it just yet...
+
+== INSTALL:
+
+  sudo gem install remote_logger
+
 
 == SYNOPSIS:
 
-  FIXME (code sample of usage)
+server:
+---
+  include RemoteLogger
+  start_drb_logger [options] # or,
+  start_ringy_logger [options]
+---
+
+client:
+---
+  include RemoteLogger
+  log = find_drb_logger [options] # or,
+  log = find_ringy_logger [options]
+  log.info 'This is my log message'
+---
 
 == REQUIREMENTS:
 
 * FIXME (list of requirements)
 
-== INSTALL:
+== Note on Patches/Pull Requests
+ 
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so I don't break it in a
+  future version unintentionally.
+* Commit, do not mess with rakefile, version, or history.
+  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
+* Send me a pull request. Bonus points for topic branches.
 
-  $ sudo gem install remote_logger
-* FIXME anything else?
+== Copyright
 
-== LICENSE:
-Copyright (c) 2010 Arvicco. See LICENSE for details.
+Copyright (c) 2010 arvicco. See LICENSE for details.

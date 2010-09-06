@@ -34,6 +34,8 @@ Gem::Specification.new do |gem|
   # Dependencies
   gem.add_development_dependency(%q{rspec}, [">= 1.2.9"])
   gem.add_development_dependency(%q{cucumber}, [">= 0"])
+  gem.add_dependency(%q{log4r}, [">= 1.1.8"])
+  gem.add_dependency(%q{RingyDingy}, [">= 1.2.0"])
   #gem.add_dependency(%q{bunder}, [">= 1.2.9"])
 
   gem.rubyforge_project = ""
