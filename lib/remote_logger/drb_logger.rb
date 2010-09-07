@@ -13,9 +13,9 @@ module RemoteLogger
       logger = new options
 
       # Raising new RingyDingy service
-      logger.info "#{name}: Initializing service..." if options[:verbose]
+      logger.info "#{name}: Initializing service with #{options}" if options[:verbose]
       DRb.start_service(options[:uri]||DRB_URI, logger)
-      logger.info "#{name}: Service started" if options[:verbose]
+      logger.info "#{name}: Service started with #{options}" if options[:verbose]
 
       DRb.thread.join
 

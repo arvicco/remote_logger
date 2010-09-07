@@ -1,8 +1,4 @@
 require 'version'
-require 'log4r'
-require 'rinda/ring'
-require 'ringy_dingy'
-#require 'ringy_dingy/ring_server'
 
 module RemoteLogger
 

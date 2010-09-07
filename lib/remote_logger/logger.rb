@@ -1,4 +1,5 @@
 #encoding: UTF-8
+require 'log4r'
 
 # TODO: Set up ACL, SSL and other security stuff
 module RemoteLogger

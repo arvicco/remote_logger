@@ -1,3 +1,7 @@
+require 'rinda/ring'
+require 'ringy_dingy'
+#require 'ringy_dingy/ring_server'
+
 module RemoteLogger
 
   # Subclass of RemoteLogger::Logger communicating via DRb protocol
@@ -15,9 +19,9 @@ module RemoteLogger
       DRb.start_service
 
       # Raising new RingyDingy service
-      logger.info "#{name}: Initializing service..." if options[:verbose]
+      logger.info "#{name}: Initializing service with #{options}" if options[:verbose]
       RingyDingy.new(logger, name.to_sym).run
-      logger.info "#{name}: Service started" if options[:verbose]
+      logger.info "#{name}: Service started with #{options}" if options[:verbose]
 
       DRb.thread.join
 
