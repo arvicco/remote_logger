@@ -21,3 +21,7 @@
 == 0.0.6 / 2010-09-07
 
 * Started describing AmqpLogger behavior BDD way
+
+== 0.0.7 / 2010-09-17
+
+* Started specing AmqpLogger with EM-Spec and Moqueue

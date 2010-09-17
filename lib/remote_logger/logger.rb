@@ -57,7 +57,7 @@ module RemoteLogger
       # create new logger named LOG_NAME
       super(options[:name]||LOGGER_NAME).tap do |logger|
         logger.outputters = outputters
-        logger.info "#{name}: Logger created" if options[:verbose]
+        logger.info "#{name}: Logger #{name} created" if options[:verbose]
       end
     end
   end

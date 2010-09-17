@@ -44,17 +44,16 @@ module RemoteLoggerTest
       end
 
       it 'does not log logger creation announcement' do
-        pending 'both @logfile_mock creation and announcement happens in sequence, impossible to set expectations'
-        logger_should_not_log 'Logger created'
+        logger_should_not_log 'Logger RemoteLogger created', stdout_only: true
         logger = described_class.new
       end
 
-      it 'replaces illegal chars in output codepages with ?' do
-        pending 'Impossible to test without real files, since StringIO does not support :undef option'
-        logger_should_log 'I %Y-%m-%d %H:%M:\d{2}.\d{3} - My ?? message\n'
-        logger = described_class.new
-        logger.info 'My 開始 message'
-      end
+#      it 'replaces illegal chars in output codepages with ?' do
+##        pending 'Need real files to test: no support of :undef option in StringIO & stdout'
+#        logger_should_log 'I %Y-%m-%d %H:%M:\d{2}.\d{3} - My [.?]', stdout_only: true
+#        logger = described_class.new
+#        logger.info 'My 開始 message'
+#      end
     end
 
     context 'with options' do
@@ -108,21 +107,19 @@ module RemoteLoggerTest
         logger = described_class.new( trunc: true)
       end
 
-      it 'specifies conversion replacement char with :replace option' do
-        pending 'Impossible to test without real files, since StringIO does not support :undef option'
-        File.should_receive(:new).with(anything, anything, hash_including(:replace))
-#         File.new(options[:file_name]||FILE_NAME, (options[:trunc] ? 'w:' : 'a:') +
-#                   (options[:file_encoding]||FILE_ENCODING), :undef => options[:undef]||:replace)
-        logger = described_class.new
-        #:replace=>'-'
-        logger_should_log '%Y-%m-%d %H:%M:\d{2}.\d{3} INFO My -- message\n'
-        logger.info 'My 開始 message'
-        p @logfile_mock
-      end
+#      it 'specifies conversion replacement char with :replace option' do
+##        pending 'Need real files to test: no support of :undef option in StringIO & stdout'
+#        File.should_receive(:new).with(anything, anything, hash_including(:replace))
+##         File.new(options[:file_name]||FILE_NAME, (options[:trunc] ? 'w:' : 'a:') +
+##                   (options[:file_encoding]||FILE_ENCODING), :undef => options[:undef]||:replace)
+#        logger = described_class.new :replace => '-'
+#        logger_should_log '%Y-%m-%d %H:%M:\d{2}.\d{3} INFO My -- message\n', stdout_only: true
+#        logger.info 'My 開始 message'
+#        p @logfile_mock
+#      end
 
       it 'logs logger creation announcement with :verbose option' do
-        pending 'both @logfile_mock creation and announcement happens in sequence, impossible to set expectations'
-        logger_should_log 'Logger created'
+        logger_should_log 'Logger RemoteLogger created', stdout_only: true
         logger = described_class.new( verbose: true )
       end
 
